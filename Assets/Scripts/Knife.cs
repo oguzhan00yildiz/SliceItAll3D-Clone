@@ -44,6 +44,7 @@ public class Knife : MonoBehaviour
             else
             {
                 _rigidbody.angularVelocity = Vector3.zero;
+                
             }
             
         }
