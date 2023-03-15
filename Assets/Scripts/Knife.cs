@@ -14,6 +14,8 @@ public class Knife : MonoBehaviour
     private Rigidbody _rigidbody;
     public Transform rbt;
     [SerializeField] private bool hasCollided;
+    float eulerAngX;
+    private bool isFlipping;
     private void Awake()
     {
        _rigidbody= rbt.transform.GetComponent<Rigidbody>();
@@ -23,10 +25,27 @@ public class Knife : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            isFlipping=true;
             _rigidbody.isKinematic = false;
             
             Jump();
             Spin();
+            StartCoroutine(Timer2());
+        }
+
+        eulerAngX = transform.eulerAngles.x;
+
+        if (eulerAngX>=180f)
+        {
+            if (isFlipping)
+            {
+                
+            }
+            else
+            {
+                _rigidbody.angularVelocity = Vector3.zero;
+            }
+            
         }
     }
 
@@ -49,8 +68,7 @@ public class Knife : MonoBehaviour
         Vector3 jumpForce = direction == 1 ? _jumpForthForce : _jumpBackForce;
         
         _rigidbody.velocity = Vector3.zero;
-        _rigidbody.AddForce(jumpForce, ForceMode.Impulse);
-        
+        _rigidbody.AddForce(jumpForce, ForceMode.Impulse);  
     }
 
     private void Spin(int direction = 1)
@@ -59,6 +77,7 @@ public class Knife : MonoBehaviour
         
         _rigidbody.angularVelocity = Vector3.zero;
         _rigidbody.AddTorque(spinTorque, ForceMode.Acceleration);
+
     }
 
    private void Stuck()
@@ -68,7 +87,16 @@ public class Knife : MonoBehaviour
 
     IEnumerator Timer()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.2f);
         hasCollided = false;
+        
+    }
+
+     IEnumerator Timer2()
+    {
+        yield return new WaitForSeconds(1.2f);
+        
+        isFlipping=false;
+        
     }
 }
