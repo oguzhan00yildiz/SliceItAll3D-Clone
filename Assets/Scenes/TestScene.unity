@@ -134,7 +134,6 @@ GameObject:
   - component: {fileID: 15096797}
   - component: {fileID: 15096796}
   - component: {fileID: 15096795}
-  - component: {fileID: 15096794}
   - component: {fileID: 15096793}
   - component: {fileID: 15096798}
   - component: {fileID: 15096799}
@@ -160,21 +159,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 1
---- !u!65 &15096794
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 15096792}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Constraints: 72
+  m_CollisionDetection: 0
 --- !u!23 &15096795
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -233,8 +219,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 15096792}
   m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 8.5, z: -0.51}
-  m_LocalScale: {x: 0.2, y: 0.5, z: 2}
+  m_LocalPosition: {x: 0, y: 16.51, z: 0.12}
+  m_LocalScale: {x: 1, y: 2, z: 8}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -253,7 +239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   materialSlicedSide: {fileID: 2100000, guid: 4944e2c33c99f9f46a4796e2e746213e, type: 2}
-  explosionForce: 25
+  explosionForce: 75
   explosionRadius: 45
   gravity: 1
   kinematic: 0
@@ -269,10 +255,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af91c2bd1c4c9ca4897af6ff86c931cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpForthForce: {x: 0, y: 10, z: 0}
-  _spinForthTorque: {x: 0, y: 0, z: 90}
-  _jumpBackForce: {x: 0, y: 90, z: 0}
+  _jumpForthForce: {x: 0, y: 15, z: 0}
+  _spinForthTorque: {x: 0, y: 0, z: -180}
+  _jumpBackForce: {x: 0, y: 0, z: 0}
   _spinBackTorque: {x: 0, y: 0, z: 90}
+  hasCollided: 0
 --- !u!65 &15096800
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -300,7 +287,7 @@ GameObject:
   - component: {fileID: 154230301}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -313,7 +300,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 154230300}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -377,7 +364,7 @@ Transform:
   m_GameObject: {fileID: 154230300}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.6783774, y: -2.18, z: -1.2834389}
-  m_LocalScale: {x: 50, y: 1, z: 50}
+  m_LocalScale: {x: 100, y: 5, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -473,9 +460,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 334787829}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.65, z: 3.49}
-  m_LocalScale: {x: 3, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 1.38, y: 1.65, z: 0.2}
+  m_LocalScale: {x: 6.5200005, y: 2.1733334, z: 2.1733334}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -557,7 +544,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 924499970}
   m_LocalRotation: {x: 0, y: 0.30070576, z: 0, w: 0.953717}
-  m_LocalPosition: {x: -8.8, y: 4.6, z: -12.4}
+  m_LocalPosition: {x: -14.82, y: 11.01, z: -22.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
