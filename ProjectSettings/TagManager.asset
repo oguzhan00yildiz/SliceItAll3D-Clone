@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - CanSlice
+  - Platform
   layers:
   - Default
   - TransparentFX
