@@ -12,11 +12,11 @@ public class Knife : MonoBehaviour
     [SerializeField] private Vector3 _spinBackTorque;
     
     private Rigidbody _rigidbody;
+    public Transform rbt;
     [SerializeField] private bool hasCollided;
-
     private void Awake()
     {
-        _rigidbody = GetComponent<Rigidbody>();
+       _rigidbody= rbt.transform.GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -28,12 +28,8 @@ public class Knife : MonoBehaviour
             Jump();
             Spin();
         }
-
-        
     }
 
-
-    
 
     void OnTriggerEnter(Collider other)
     {
