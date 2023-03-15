@@ -19,8 +19,10 @@ public class SliceTestScript : MonoBehaviour
             GameObject SlicedObjUp = sliceObj.CreateUpperHull(other.gameObject, materialSlicedSide);
             GameObject SlicedObjLow = sliceObj.CreateLowerHull(other.gameObject, materialSlicedSide);
             Destroy(other.gameObject);
-            AddComponent(SlicedObjUp);
-            AddComponent(SlicedObjLow);
+             AddComponent(SlicedObjUp);
+             AddComponent(SlicedObjLow);
+            
+            
         }
     }
 
@@ -37,6 +39,6 @@ public class SliceTestScript : MonoBehaviour
         rigidBody.useGravity = gravity;
         rigidBody.isKinematic = kinematic;
         rigidBody.AddExplosionForce(explosionForce, obj.transform.position, explosionRadius);
-        obj.tag = "CanSlice";
+        
     }
 }
