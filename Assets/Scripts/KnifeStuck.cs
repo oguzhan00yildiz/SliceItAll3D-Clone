@@ -5,47 +5,45 @@ using UnityEngine;
 public class KnifeStuck : MonoBehaviour
 {
    public Rigidbody rb;
-    private bool isStuck;
+   
+    private bool canMove = false;
+    private bool isKnifeOnPlatform;
+
+    KnifeMovement km;
 
     private void Start()
     {
-      
-    }
+        km = transform.gameObject.GetComponent<KnifeMovement>();
 
-    private void Update() {
+    }
+    private void Update() 
+    {
         Debug.Log(rb.isKinematic);
+
+        if (Input.GetMouseButtonDown(0)) 
+           {
+            if (isKnifeOnPlatform) 
+            {
+                rb.isKinematic = false;
+                isKnifeOnPlatform = false;
+                km.Flip();
+                StartCoroutine(Timer());
+            }
+           } 
     }
     private void OnTriggerEnter(Collider other)
     {
-        
-        if (other.tag=="Platform")
+        if (other.tag == "Platform")
         {
-           rb.isKinematic=true; 
-           isStuck=true;
+            rb.isKinematic = true;
+            isKnifeOnPlatform=true;
         }
-        
-         if(Input.GetMouseButtonDown(0) && isStuck)
-        {
-            rb.isKinematic=false;
-            //StartCoroutine(Timer());
-            isStuck=false;
-            
-        }
-        else
-        {
-            rb.isKinematic=false;
-        }
-        
-        
     }
-
     IEnumerator Timer()
     {
         Physics.IgnoreLayerCollision(6,7);
-        yield return new WaitForSeconds(0.1f);
-        Physics.IgnoreLayerCollision(6,7,false);
-
-
+        yield return new WaitForSeconds(1f);
+        Physics.IgnoreLayerCollision(6,7,false);  
     }
 
 }

@@ -5,23 +5,30 @@ using UnityEngine;
 public class KnifeMovement : MonoBehaviour
 {
     private Rigidbody rb;
-    public Vector2 force;
+    public Vector3 force;
   
     public float torque = 4f;
     float endTorque = 0f;
 
 
     public float rotationAmount;
+
+    [SerializeField] private float maxHorizontalVelocity=3f;
    
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        
+   
     }
 
     void Update()
     {
+        if (rb.velocity.magnitude > maxHorizontalVelocity)
+    {
+        rb.velocity = rb.velocity.normalized * maxHorizontalVelocity;
+    }
+
         rotationAmount = transform.eulerAngles.x;
         
 
@@ -30,10 +37,10 @@ public class KnifeMovement : MonoBehaviour
             Flip();
         }
    
-        if (transform.eulerAngles.x>=300f && transform.eulerAngles.x <360f )
+        if (transform.eulerAngles.x>=300f && transform.eulerAngles.x <410f ) //when its is applying increase vertical force
         {
            
-           rb.angularDrag = 1f;
+           rb.angularDrag = 1.4f;
         
         }
         else
@@ -46,7 +53,7 @@ public class KnifeMovement : MonoBehaviour
     }
     
 
-    private void Flip()
+    public void Flip()
     {
         rb.angularVelocity=Vector3.zero;
         rb.AddForce(force, ForceMode.Impulse);
