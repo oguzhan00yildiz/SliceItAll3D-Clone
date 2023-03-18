@@ -1881,6 +1881,8 @@ MonoBehaviour:
   torque: 5
   rotationAmount: 0
   maxHorizontalVelocity: 10
+  minDegree: -25
+  maxDegree: 55
 --- !u!54 &7266337120998862775
 Rigidbody:
   m_ObjectHideFlags: 0
