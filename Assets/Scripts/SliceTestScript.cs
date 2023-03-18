@@ -31,7 +31,6 @@ public class SliceTestScript : MonoBehaviour
             AddComponent(SlicedObjUp);
             AddComponent(SlicedObjLow);
             score++;
-            Debug.Log(score);
             StartCoroutine(DestroyHulls(SlicedObjUp, SlicedObjLow));
         }
     }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CanSlice
   - Platform
+  - KnifeHandle
   layers:
   - Default
   - TransparentFX

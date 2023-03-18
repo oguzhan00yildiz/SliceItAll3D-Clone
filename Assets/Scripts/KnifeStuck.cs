@@ -18,7 +18,7 @@ public class KnifeStuck : MonoBehaviour
     }
     private void Update() 
     {
-        Debug.Log(rb.isKinematic);
+        
 
         if (Input.GetMouseButtonDown(0)) 
            {

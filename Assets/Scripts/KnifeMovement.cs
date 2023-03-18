@@ -6,8 +6,10 @@ public class KnifeMovement : MonoBehaviour
 {
     private Rigidbody rb;
     public Vector3 force;
+    public Vector3 forceB;
   
     public float torque = 4f;
+    public float torqueB = 4f;
     float endTorque = 0f;
 
 
@@ -26,6 +28,27 @@ public class KnifeMovement : MonoBehaviour
     }
 
     void Update()
+    {
+        Move();
+    
+    }
+    public void Flip()
+    {
+        rb.velocity=new Vector3(0,0,0);
+        rb.angularVelocity=Vector3.zero;
+        rb.AddForce(force, ForceMode.Impulse);
+        rb.AddTorque(torque, 0f, 0f, ForceMode.Impulse);
+    }
+
+    IEnumerator Timer()
+    {
+        angDrag=false;
+        rb.angularDrag=0.05f;
+        yield return new WaitForSeconds(1f);
+        angDrag=true; 
+    }
+
+    private void Move()
     {
         var x = UnityEditor.TransformUtils.GetInspectorRotation(gameObject.transform).x;
 
@@ -47,19 +70,16 @@ public class KnifeMovement : MonoBehaviour
                 rb.angularDrag = 7f;
             }
         }
-    }
-    public void Flip()
-    {
-        rb.angularVelocity=Vector3.zero;
-        rb.AddForce(force, ForceMode.Impulse);
-        rb.AddTorque(torque, 0f, 0f, ForceMode.Impulse);
+
+
     }
 
-    IEnumerator Timer()
+
+    public void PushBack()
     {
-        angDrag=false;
-        rb.angularDrag=0.05f;
-        yield return new WaitForSeconds(1f);
-        angDrag=true; 
+            rb.velocity=new Vector3(0,0,0);
+            rb.AddForce(forceB, ForceMode.Impulse);
     }
+      
+   
 }

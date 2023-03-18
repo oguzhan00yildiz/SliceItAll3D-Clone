@@ -317,6 +317,52 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &244538197
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 244538198}
+  - component: {fileID: 244538199}
+  m_Layer: 6
+  m_Name: KnifeHande
+  m_TagString: KnifeHandle
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &244538198
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244538197}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.09}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7266337120998862773}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &244538199
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244538197}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.02
+  m_Height: 0.13
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &302109409
 GameObject:
   m_ObjectHideFlags: 0
@@ -1111,7 +1157,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 924499970}
-  m_LocalRotation: {x: 0.1369451, y: -0.465598, z: 0.07318222, w: 0.8712686}
+  m_LocalRotation: {x: 0.13694511, y: -0.46559802, z: 0.073182225, w: 0.8712686}
   m_LocalPosition: {x: 14.96, y: 22.300713, z: -9.993104}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1576,7 +1622,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1828696017}
-  m_LocalRotation: {x: 0.1369451, y: -0.465598, z: 0.07318222, w: 0.8712686}
+  m_LocalRotation: {x: 0.13694511, y: -0.46559802, z: 0.073182225, w: 0.8712686}
   m_LocalPosition: {x: 14.96, y: 22.300713, z: -9.993104}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1861,7 +1907,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 16.500711, z: 0.0068962188}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 244538198}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1877,8 +1924,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfb39bcebb9600545a891831f6be2226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: {x: 0, y: 15, z: 1}
+  force: {x: 0, y: 8, z: 2}
+  forceB: {x: 0, y: 5, z: -2}
   torque: 5
+  torqueB: 0
   rotationAmount: 0
   maxHorizontalVelocity: 10
   minDegree: -25
