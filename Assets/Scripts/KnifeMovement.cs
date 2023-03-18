@@ -13,8 +13,11 @@ public class KnifeMovement : MonoBehaviour
 
     public float rotationAmount;
 
-    [SerializeField] private float maxHorizontalVelocity=3f;
-   
+    [SerializeField] private float maxHorizontalVelocity=3f,minDegree,maxDegree;
+    private float rotX;
+    private float rotY;
+
+    private bool angDrag=false;
 
     void Start()
     {
@@ -24,48 +27,39 @@ public class KnifeMovement : MonoBehaviour
 
     void Update()
     {
-        if (rb.velocity.magnitude > maxHorizontalVelocity)
-    {
-        rb.velocity = rb.velocity.normalized * maxHorizontalVelocity;
-    }
+        var x = UnityEditor.TransformUtils.GetInspectorRotation(gameObject.transform).x;
 
+        if (rb.velocity.magnitude > maxHorizontalVelocity)
+        {
+            rb.velocity = rb.velocity.normalized * maxHorizontalVelocity;
+        }
         rotationAmount = transform.eulerAngles.x;
-        
 
         if (Input.GetMouseButtonDown(0))
         {
+            StartCoroutine(Timer());
             Flip();
-        }
-   
-        if (transform.eulerAngles.x>=300f && transform.eulerAngles.x <410f ) //when its is applying increase vertical force
-        {
-           
-           rb.angularDrag = 1.4f;
-        
         }
         else
         {
-            rb.angularDrag=0.05f;
+            if (x>=minDegree && x <maxDegree && angDrag ) 
+            {
+                rb.angularDrag = 7f;
+            }
         }
-
-
-
     }
-    
-
     public void Flip()
     {
         rb.angularVelocity=Vector3.zero;
         rb.AddForce(force, ForceMode.Impulse);
-        
         rb.AddTorque(torque, 0f, 0f, ForceMode.Impulse);
-        
     }
 
     IEnumerator Timer()
     {
+        angDrag=false;
+        rb.angularDrag=0.05f;
         yield return new WaitForSeconds(1f);
-       
-        
+        angDrag=true; 
     }
 }
