@@ -9,6 +9,15 @@ public class SliceTestScript : MonoBehaviour
     public float explosionForce;
     public float explosionRadius;
     public bool gravity , kinematic;
+    public int score;
+
+    public static SliceTestScript SliceTestScriptInstant;
+
+    void Start()
+    {
+        SliceTestScriptInstant = this;
+        score = 0;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -19,10 +28,11 @@ public class SliceTestScript : MonoBehaviour
             GameObject SlicedObjUp = sliceObj.CreateUpperHull(other.gameObject, materialSlicedSide);
             GameObject SlicedObjLow = sliceObj.CreateLowerHull(other.gameObject, materialSlicedSide);
             Destroy(other.gameObject);
-             AddComponent(SlicedObjUp);
-             AddComponent(SlicedObjLow);
-            
-            
+            AddComponent(SlicedObjUp);
+            AddComponent(SlicedObjLow);
+            score++;
+            Debug.Log(score);
+            StartCoroutine(DestroyHulls(SlicedObjUp, SlicedObjLow));
         }
     }
 
@@ -40,5 +50,12 @@ public class SliceTestScript : MonoBehaviour
         rigidBody.isKinematic = kinematic;
         rigidBody.AddExplosionForce(explosionForce, obj.transform.position, explosionRadius);
         
+    }
+
+    IEnumerator DestroyHulls(GameObject UpHull, GameObject LowHull)
+    {
+        yield return new WaitForSeconds(3f);
+        Destroy(UpHull);
+        Destroy(LowHull);
     }
 }
