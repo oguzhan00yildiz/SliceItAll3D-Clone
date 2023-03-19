@@ -6,7 +6,7 @@ using EzySlice;
 public class SliceTestScript : MonoBehaviour
 {
     public Material materialSlicedSide;
-    public float explosionForce;
+    public float explosionForceNear, explosionForceFar;
     public float explosionRadius;
     public bool gravity , kinematic;
     public int score;
@@ -21,15 +21,14 @@ public class SliceTestScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
-        if(other.gameObject.CompareTag("CanSlice"))
+        if(other.gameObject.tag == "CanSlice")
         {
             SlicedHull sliceObj = Slice(other.gameObject, materialSlicedSide);
             GameObject SlicedObjUp = sliceObj.CreateUpperHull(other.gameObject, materialSlicedSide);
             GameObject SlicedObjLow = sliceObj.CreateLowerHull(other.gameObject, materialSlicedSide);
             Destroy(other.gameObject);
-            AddComponent(SlicedObjUp);
-            AddComponent(SlicedObjLow);
+            AddComponent(SlicedObjUp , explosionForceNear);
+            AddComponent(SlicedObjLow , explosionForceFar);
             score++;
             StartCoroutine(DestroyHulls(SlicedObjUp, SlicedObjLow));
         }
@@ -41,14 +40,13 @@ public class SliceTestScript : MonoBehaviour
         return obj.Slice(transform.position, transform.right, mat);
     }
 
-    void AddComponent(GameObject obj)
+    void AddComponent(GameObject obj , float expForce)
     {
         obj.AddComponent<BoxCollider>();
         var rigidBody = obj.AddComponent<Rigidbody>();
         rigidBody.useGravity = gravity;
         rigidBody.isKinematic = kinematic;
-        rigidBody.AddExplosionForce(explosionForce, obj.transform.position, explosionRadius);
-        
+        rigidBody.AddExplosionForce(expForce, obj.transform.position, explosionRadius); 
     }
 
     IEnumerator DestroyHulls(GameObject UpHull, GameObject LowHull)
