@@ -21,7 +21,7 @@ public class KnifeHandle : MonoBehaviour
     {
         if (other.CompareTag("CanSlice"))
         {
-            Debug.Log("asdasd");
+            
             KnifeMovement.knifeMovementInstance.PushBack();
         }
     }
