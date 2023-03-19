@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using EzySlice;
+using TMPro;
 
 public class SliceTestScript : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class SliceTestScript : MonoBehaviour
     public int score;
 
     public static SliceTestScript SliceTestScriptInstant;
+    public TMP_Text popUpScore;
 
     void Start()
     {
@@ -30,6 +32,7 @@ public class SliceTestScript : MonoBehaviour
             AddComponent(SlicedObjUp , explosionForceNear);
             AddComponent(SlicedObjLow , explosionForceFar);
             score++;
+            Instantiate(popUpScore, transform.position, Quaternion.Euler(0, -60, 0));
             StartCoroutine(DestroyHulls(SlicedObjUp, SlicedObjLow));
         }
     }
