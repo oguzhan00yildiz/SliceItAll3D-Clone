@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class KnifeMovement : MonoBehaviour
 {
+    public static KnifeMovement knifeMovementInstance;
     private Rigidbody rb;
     public Vector3 force;
     public Vector3 forceB;
@@ -24,6 +25,8 @@ public class KnifeMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        knifeMovementInstance=this;
    
     }
 
