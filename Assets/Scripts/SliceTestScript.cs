@@ -54,7 +54,7 @@ public class SliceTestScript : MonoBehaviour
 
     IEnumerator DestroyHulls(GameObject UpHull, GameObject LowHull)
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(6f);
         Destroy(UpHull);
         Destroy(LowHull);
     }
