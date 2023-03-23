@@ -15,6 +15,8 @@ public class SliceTestScript : MonoBehaviour
     public static SliceTestScript SliceTestScriptInstant;
     public TMP_Text popUpScore;
 
+    public Vector3 childTransform; 
+
     void Start()
     {
         SliceTestScriptInstant = this;
@@ -23,8 +25,9 @@ public class SliceTestScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "CanSlice")
+        if(other.gameObject.CompareTag("CanSlice"))
         {
+            
             SlicedHull sliceObj = Slice(other.gameObject, materialSlicedSide);
             GameObject SlicedObjUp = sliceObj.CreateUpperHull(other.gameObject, materialSlicedSide);
             GameObject SlicedObjLow = sliceObj.CreateLowerHull(other.gameObject, materialSlicedSide);
@@ -34,6 +37,19 @@ public class SliceTestScript : MonoBehaviour
             score++;
             Instantiate(popUpScore, transform.position, Quaternion.Euler(0, -60, 0));
             StartCoroutine(DestroyHulls(SlicedObjUp, SlicedObjLow));
+        }
+        else if(other.gameObject.CompareTag("CanSlicePen"))
+        {
+         
+             SlicedHull sliceObj = Slice(other.gameObject, materialSlicedSide);
+            GameObject SlicedObjUp = sliceObj.CreateUpperHull(other.gameObject, materialSlicedSide);
+            GameObject SlicedObjLow = sliceObj.CreateLowerHull(other.gameObject, materialSlicedSide);
+            Destroy(other.gameObject);
+            AddComponent(SlicedObjUp , explosionForceNear);
+            score++;
+            Instantiate(popUpScore, transform.position, Quaternion.Euler(0, -60, 0));
+            StartCoroutine(DestroyHulls(SlicedObjUp, SlicedObjLow));
+
         }
     }
 
