@@ -33,7 +33,7 @@ public class KnifeStuck : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Platform")
+        if (other.CompareTag("Platform"))
         {
             rb.isKinematic = true;
             isKnifeOnPlatform=true;

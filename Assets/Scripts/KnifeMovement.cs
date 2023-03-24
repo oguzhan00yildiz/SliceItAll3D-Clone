@@ -12,6 +12,7 @@ public class KnifeMovement : MonoBehaviour
     public float torque = 4f;
     public float torqueB = 4f;
     float endTorque = 0f;
+    private float realRotationAmount;
 
 
     public float rotationAmount;
@@ -33,7 +34,7 @@ public class KnifeMovement : MonoBehaviour
     void Update()
     {
         Move();
-    
+
     }
     public void Flip()
     {
@@ -47,13 +48,13 @@ public class KnifeMovement : MonoBehaviour
     {
         angDrag=false;
         rb.angularDrag=0.05f;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.3f);
         angDrag=true; 
     }
 
     private void Move()
     {
-        var x = UnityEditor.TransformUtils.GetInspectorRotation(gameObject.transform).x;
+        realRotationAmount = UnityEditor.TransformUtils.GetInspectorRotation(gameObject.transform).x;
 
         if (rb.velocity.magnitude > maxHorizontalVelocity)
         {
@@ -65,10 +66,11 @@ public class KnifeMovement : MonoBehaviour
         {
             StartCoroutine(Timer());
             Flip();
+            
         }
         else
         {
-            if (x>=minDegree && x <maxDegree && angDrag ) 
+            if (realRotationAmount>=minDegree && realRotationAmount <maxDegree && angDrag ) 
             {
                 rb.angularDrag = 7f;
             }
