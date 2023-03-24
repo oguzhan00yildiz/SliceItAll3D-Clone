@@ -7,6 +7,9 @@ using TMPro;
 public class SliceTestScript : MonoBehaviour
 {
     public Material materialSlicedSide;
+
+    private int tempIndex = 0;
+    private int materialIndex;
     public float explosionForceNear, explosionForceFar;
     public float explosionRadius;
     public bool gravity , kinematic;
@@ -29,8 +32,17 @@ public class SliceTestScript : MonoBehaviour
     {
         if(other.gameObject.CompareTag("CanSlice"))
         {
-            materialSlicedSide = materials[Random.Range(1,9)];
-
+            materialIndex = Random.Range(1,9);
+            
+            if(tempIndex != materialIndex){
+                materialSlicedSide = materials[materialIndex];
+                tempIndex = materialIndex;
+            }
+            else
+            {
+                materialIndex = Random.Range(1,9);
+                materialSlicedSide = materials[materialIndex];
+            }
             SlicedHull sliceObj = Slice(other.gameObject, materialSlicedSide);
             GameObject SlicedObjUp = sliceObj.CreateUpperHull(other.gameObject, materialSlicedSide);
             GameObject SlicedObjLow = sliceObj.CreateLowerHull(other.gameObject, materialSlicedSide);
