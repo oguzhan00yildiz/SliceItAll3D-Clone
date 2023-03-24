@@ -12,6 +12,10 @@ public class SliceTestScript : MonoBehaviour
     public bool gravity , kinematic;
     public int score;
 
+    public Material[] materials = new Material[9];
+
+    
+
     public static SliceTestScript SliceTestScriptInstant;
     public TMP_Text popUpScore;
 
@@ -25,6 +29,8 @@ public class SliceTestScript : MonoBehaviour
     {
         if(other.gameObject.CompareTag("CanSlice"))
         {
+            materialSlicedSide = materials[Random.Range(1,9)];
+
             SlicedHull sliceObj = Slice(other.gameObject, materialSlicedSide);
             GameObject SlicedObjUp = sliceObj.CreateUpperHull(other.gameObject, materialSlicedSide);
             GameObject SlicedObjLow = sliceObj.CreateLowerHull(other.gameObject, materialSlicedSide);
@@ -37,6 +43,7 @@ public class SliceTestScript : MonoBehaviour
         }
         else if(other.gameObject.CompareTag("CanSlicePen"))
         {   
+            materialSlicedSide = materials[Random.Range(1,9)];
             SlicedHull sliceObj = Slice(other.gameObject, materialSlicedSide);
             GameObject SlicedObjUp = sliceObj.CreateUpperHull(other.gameObject, materialSlicedSide);
             GameObject SlicedObjLow = sliceObj.CreateLowerHull(other.gameObject, materialSlicedSide);
