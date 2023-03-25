@@ -9,11 +9,17 @@ public class KnifeStuck : MonoBehaviour
     private bool canMove = false;
     private bool isKnifeOnPlatform;
 
+    public bool isLevelDone;
+
     KnifeMovement km;
+
+    static public KnifeStuck KnifeStuckInstance;
 
     private void Start()
     {
         km = transform.gameObject.GetComponent<KnifeMovement>();
+        KnifeStuckInstance = this;
+        isLevelDone = false;
 
     }
     private void Update() 
@@ -41,27 +47,37 @@ public class KnifeStuck : MonoBehaviour
         else if (other.CompareTag("2x"))
         {
             rb.isKinematic = true;
-            isKnifeOnPlatform=true;
+            //isKnifeOnPlatform=true;
+            this.GetComponent<KnifeMovement>().enabled = false;
+            isLevelDone = true;
         }
         else if (other.CompareTag("3x"))
         {
             rb.isKinematic = true;
-            isKnifeOnPlatform=true;
+            //isKnifeOnPlatform=true;
+            this.GetComponent<KnifeMovement>().enabled = false;
+            isLevelDone = true;
         }
         else if (other.CompareTag("4x"))
         {
             rb.isKinematic = true;
-            isKnifeOnPlatform=true;
+            //isKnifeOnPlatform=true;
+            this.GetComponent<KnifeMovement>().enabled = false;
+            isLevelDone = true;
         }
         else if (other.CompareTag("5x"))
         {
             rb.isKinematic = true;
-            isKnifeOnPlatform=true;
+            //isKnifeOnPlatform=true;
+            this.GetComponent<KnifeMovement>().enabled = false;
+            isLevelDone = true;
         }
         else if (other.CompareTag("10x"))
         {
             rb.isKinematic = true;
-            isKnifeOnPlatform=true;
+            //isKnifeOnPlatform=true;
+            this.GetComponent<KnifeMovement>().enabled = false;
+            isLevelDone = true;
         }
 
     }
