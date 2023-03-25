@@ -8,7 +8,6 @@ TagManager:
   - Platform
   - KnifeHandle
   - CanSlicePen
-  - FailGround
   layers:
   - Default
   - TransparentFX
