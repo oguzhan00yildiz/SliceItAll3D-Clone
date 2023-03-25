@@ -16,11 +16,11 @@ public class SliceTestScript : MonoBehaviour
     public int score;
 
     public Material[] materials = new Material[9];
-
     
-
     public static SliceTestScript SliceTestScriptInstant;
     public TMP_Text popUpScore;
+
+    [SerializeField] private GameObject Splash;
 
     void Start()
     {
@@ -51,6 +51,16 @@ public class SliceTestScript : MonoBehaviour
             AddComponent(SlicedObjLow , explosionForceFar);
             score++;
             Instantiate(popUpScore, SlicedObjUp.transform.position + new Vector3(3,0,-3), Quaternion.Euler(0, -60, 0));
+
+            Color objectColor = other.GetComponent<Renderer>().material.color;
+           
+            var tempSplash=Instantiate(Splash,SlicedObjUp.transform.position,Quaternion.Euler(-45,0,0));
+
+            var tempSplashSettings = tempSplash.GetComponent<ParticleSystem>().main;
+            tempSplashSettings.startColor =objectColor;
+            
+            Destroy(tempSplash,1f);
+
             StartCoroutine(DestroyHulls(SlicedObjUp, SlicedObjLow));
         }
         else if(other.gameObject.CompareTag("CanSlicePen"))
@@ -64,7 +74,14 @@ public class SliceTestScript : MonoBehaviour
             //AddComponent(SlicedObjLow , explosionForceFar);
             score++;
             Instantiate(popUpScore, SlicedObjUp.transform.position + new Vector3(0,0,0)/*transform.position*/, Quaternion.Euler(0, -60, 0));
+
+            Color objectColor = other.GetComponent<Renderer>().material.color;
+            var tempSplash=Instantiate(Splash,SlicedObjUp.transform.position,Quaternion.Euler(-45,0,0));
+            var tempSplashSettings = tempSplash.GetComponent<ParticleSystem>().main;
+            tempSplashSettings.startColor =objectColor;
+            
             StartCoroutine(DestroyHulls(SlicedObjUp, SlicedObjLow));
+
             
         }
     }
