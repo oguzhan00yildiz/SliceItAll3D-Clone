@@ -38,6 +38,32 @@ public class KnifeStuck : MonoBehaviour
             rb.isKinematic = true;
             isKnifeOnPlatform=true;
         }
+        else if (other.CompareTag("2x"))
+        {
+            rb.isKinematic = true;
+            isKnifeOnPlatform=true;
+        }
+        else if (other.CompareTag("3x"))
+        {
+            rb.isKinematic = true;
+            isKnifeOnPlatform=true;
+        }
+        else if (other.CompareTag("4x"))
+        {
+            rb.isKinematic = true;
+            isKnifeOnPlatform=true;
+        }
+        else if (other.CompareTag("5x"))
+        {
+            rb.isKinematic = true;
+            isKnifeOnPlatform=true;
+        }
+        else if (other.CompareTag("10x"))
+        {
+            rb.isKinematic = true;
+            isKnifeOnPlatform=true;
+        }
+
     }
     IEnumerator Timer()
     {
