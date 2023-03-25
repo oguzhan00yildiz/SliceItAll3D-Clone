@@ -7,6 +7,7 @@ public class ScoreText : MonoBehaviour
 {
 
     public TMP_Text score;
+    public TMP_Text currentScore;
     public int multipliedScore;
 
     // Start is called before the first frame update
@@ -20,11 +21,13 @@ public class ScoreText : MonoBehaviour
     {
         if (multipliedScore>0)
         {
-            score.text = "Score : " + multipliedScore.ToString();
+            score.text = multipliedScore.ToString();
+            currentScore.text = multipliedScore.ToString();
         }
         else
         {
-            score.text = "Score : " + SliceTestScript.SliceTestScriptInstant.score.ToString();
+            score.text = SliceTestScript.SliceTestScriptInstant.score.ToString();
+            currentScore.text = SliceTestScript.SliceTestScriptInstant.score.ToString();
         }
         
         
@@ -69,6 +72,7 @@ public class ScoreText : MonoBehaviour
 
         multipliedScore = SliceTestScript.SliceTestScriptInstant.score * multipleValue; 
         
-        score.text = "Score : " + multipliedScore.ToString();
+        score.text = multipliedScore.ToString();
+        currentScore.text = multipliedScore.ToString();
     }
 }
