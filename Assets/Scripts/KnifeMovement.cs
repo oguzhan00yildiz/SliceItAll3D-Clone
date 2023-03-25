@@ -24,6 +24,7 @@ public class KnifeMovement : MonoBehaviour
 
     private bool angDrag=false;
 
+    public bool isFailed;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -31,7 +32,8 @@ public class KnifeMovement : MonoBehaviour
         knifeMovementInstance=this;
 
         originalColor = transform.GetChild(2).GetComponent<Renderer>().material.color;
-   
+
+        isFailed = false;
     }
 
     void Update()
@@ -101,6 +103,16 @@ public class KnifeMovement : MonoBehaviour
        transform.GetChild(2).GetComponent<Renderer>().material.color=originalColor;
 
     }
-      
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("FailGround"))
+        {
+            rb.isKinematic = true;
+            isFailed = true;
+            this.GetComponent<KnifeMovement>().enabled = false;
+            Debug.Log(isFailed);
+        }
+    }  
    
 }
