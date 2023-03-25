@@ -13,6 +13,7 @@ public class KnifeMovement : MonoBehaviour
     public float torqueB = 4f;
     float endTorque = 0f;
     private float realRotationAmount;
+    private Color originalColor;
 
 
     public float rotationAmount;
@@ -28,6 +29,8 @@ public class KnifeMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         knifeMovementInstance=this;
+
+        originalColor = transform.GetChild(2).GetComponent<Renderer>().material.color;
    
     }
 
@@ -82,8 +85,21 @@ public class KnifeMovement : MonoBehaviour
 
     public void PushBack()
     {
+            StartCoroutine(Flash());
             rb.velocity=new Vector3(0,0,0);
             rb.AddForce(forceB, ForceMode.Impulse);
+
+            
+    }
+
+    private IEnumerator Flash()
+    {
+       transform.GetChild(2).GetComponent<Renderer>().material.color = Color.white;
+
+        yield return new WaitForSeconds(0.1f);
+            
+       transform.GetChild(2).GetComponent<Renderer>().material.color=originalColor;
+
     }
       
    
