@@ -8,6 +8,12 @@ TagManager:
   - Platform
   - KnifeHandle
   - CanSlicePen
+  - 1x
+  - 2x
+  - 3x
+  - 4x
+  - 5x
+  - 10x
   layers:
   - Default
   - TransparentFX
