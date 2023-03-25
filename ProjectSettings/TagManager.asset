@@ -14,6 +14,7 @@ TagManager:
   - 4x
   - 5x
   - 10x
+  - FailGround
   layers:
   - Default
   - TransparentFX
