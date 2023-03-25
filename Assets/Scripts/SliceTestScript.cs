@@ -50,7 +50,7 @@ public class SliceTestScript : MonoBehaviour
             AddComponent(SlicedObjUp , explosionForceNear);
             AddComponent(SlicedObjLow , explosionForceFar);
             score++;
-            Instantiate(popUpScore, transform.position, Quaternion.Euler(0, -60, 0));
+            Instantiate(popUpScore, SlicedObjUp.transform.position + new Vector3(3,0,-3), Quaternion.Euler(0, -60, 0));
             StartCoroutine(DestroyHulls(SlicedObjUp, SlicedObjLow));
         }
         else if(other.gameObject.CompareTag("CanSlicePen"))
@@ -63,7 +63,7 @@ public class SliceTestScript : MonoBehaviour
             AddComponent(SlicedObjUp , explosionForceNear);
             //AddComponent(SlicedObjLow , explosionForceFar);
             score++;
-            Instantiate(popUpScore, transform.position, Quaternion.Euler(0, -60, 0));
+            Instantiate(popUpScore, SlicedObjUp.transform.position + new Vector3(0,0,0)/*transform.position*/, Quaternion.Euler(0, -60, 0));
             StartCoroutine(DestroyHulls(SlicedObjUp, SlicedObjLow));
             
         }
