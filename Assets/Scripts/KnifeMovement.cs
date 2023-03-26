@@ -15,6 +15,7 @@ public class KnifeMovement : MonoBehaviour
     [SerializeField] private float maxHorizontalVelocity=3f,minDegree,maxDegree;
     private float rotX;
     private float rotY;
+    private bool canMove;
     private bool angDrag=false;
     public bool isFailed;
     void Start()
@@ -27,6 +28,27 @@ public class KnifeMovement : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            canMove =true;
+        }
+    }
+
+    void FixedUpdate()
+    {
+           if (canMove)
+        {
+            StartCoroutine(Timer());
+            Flip();
+            canMove = false;
+        }
+        else
+        {
+            if (realRotationAmount>=minDegree && realRotationAmount <maxDegree && angDrag ) 
+            {
+                rb.angularDrag = 7f;
+            }
+        }
         Move();
     }
     public void Flip()
@@ -53,19 +75,6 @@ public class KnifeMovement : MonoBehaviour
             rb.velocity = rb.velocity.normalized * maxHorizontalVelocity;
         }
         rotationAmount = transform.eulerAngles.x;
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            StartCoroutine(Timer());
-            Flip();
-        }
-        else
-        {
-            if (realRotationAmount>=minDegree && realRotationAmount <maxDegree && angDrag ) 
-            {
-                rb.angularDrag = 7f;
-            }
-        }
     }
 
     public void PushBack()
