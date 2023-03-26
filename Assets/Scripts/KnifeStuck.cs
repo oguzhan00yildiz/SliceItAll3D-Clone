@@ -6,7 +6,6 @@ public class KnifeStuck : MonoBehaviour
 {
    public Rigidbody rb;
    
-    private bool canMove = false;
     private bool isKnifeOnPlatform;
 
     public bool isLevelDone;

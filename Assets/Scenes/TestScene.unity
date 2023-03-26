@@ -3378,6 +3378,10 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0.23529412
       objectReference: {fileID: 0}
+    - target: {fileID: 7893291040673050032, guid: fef18b15854cbb242ae00798233d42a2, type: 3}
+      propertyPath: m_text
+      value: Failed
+      objectReference: {fileID: 0}
     - target: {fileID: 8164215334557902352, guid: fef18b15854cbb242ae00798233d42a2, type: 3}
       propertyPath: m_Name
       value: TryAgainTxt
@@ -6398,7 +6402,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 924499970}
-  m_LocalRotation: {x: 0.10955946, y: -0.4081025, z: 0.04940546, w: 0.90499073}
+  m_LocalRotation: {x: 0.10970123, y: -0.40824446, z: 0.04949131, w: 0.90490484}
   m_LocalPosition: {x: 25.544556, y: 17.1, z: -386.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6825,7 +6829,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Seviye '
+  m_text: 'LEVEL
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8036,12 +8042,12 @@ MonoBehaviour:
   m_LookaheadIgnoreY: 0
   m_HorizontalDamping: 0.5
   m_VerticalDamping: 0.5
-  m_ScreenX: 0.308
+  m_ScreenX: 0.30800003
   m_ScreenY: 0.527
-  m_DeadZoneWidth: 0
-  m_DeadZoneHeight: 0
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
+  m_DeadZoneWidth: 0.32
+  m_DeadZoneHeight: 0.36
+  m_SoftZoneWidth: 0.54
+  m_SoftZoneHeight: 0.55
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
@@ -12157,7 +12163,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SEN KAZANDIN
+  m_text: 'YOU WIN
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -13289,7 +13297,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1828696017}
-  m_LocalRotation: {x: 0.10955946, y: -0.4081025, z: 0.04940546, w: 0.90499073}
+  m_LocalRotation: {x: 0.10970123, y: -0.40824446, z: 0.04949131, w: 0.90490484}
   m_LocalPosition: {x: 25.544556, y: 17.1, z: -386.3}
   m_LocalScale: {x: 1, y: 3.9, z: 1}
   m_ConstrainProportionsScale: 0

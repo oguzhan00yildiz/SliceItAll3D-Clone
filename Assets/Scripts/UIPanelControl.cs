@@ -9,13 +9,11 @@ public class UIPanelControl : MonoBehaviour
 
     [SerializeField] private GameObject StartPanel, FailPanel, SuccesPanel, RetryButton;
     private bool isFailed, isLevelDone, isStarted;
-    
     [SerializeField] private TMP_Text levelTxt;
-    // Start is called before the first frame update
 
     void Awake()
     {
-        levelTxt.text = "Seviye " + (SceneManager.GetActiveScene().buildIndex + 1).ToString();
+        levelTxt.text = "Level " + (SceneManager.GetActiveScene().buildIndex + 1).ToString();
     }
     void Start()
     {
@@ -23,7 +21,6 @@ public class UIPanelControl : MonoBehaviour
         FailPanel.SetActive(false);
         SuccesPanel.SetActive(false);
         RetryButton.SetActive(false);
-
         isFailed = false;
         isLevelDone = false;
     }

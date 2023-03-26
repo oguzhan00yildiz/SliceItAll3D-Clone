@@ -10,13 +10,6 @@ public class ScoreText : MonoBehaviour
     public TMP_Text currentScore;
     public int multipliedScore;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (multipliedScore>0)
@@ -29,9 +22,6 @@ public class ScoreText : MonoBehaviour
             score.text = SliceTestScript.SliceTestScriptInstant.score.ToString();
             currentScore.text = SliceTestScript.SliceTestScriptInstant.score.ToString();
         }
-        
-        
-
     }
 
     void OnTriggerEnter(Collider other)
@@ -63,15 +53,11 @@ public class ScoreText : MonoBehaviour
             number = 10;
             ScoreMultiplier(number);
         }
-        
     }
-
 
     private void ScoreMultiplier(int multipleValue) 
     {
-
         multipliedScore = SliceTestScript.SliceTestScriptInstant.score * multipleValue; 
-        
         score.text = multipliedScore.ToString();
         currentScore.text = multipliedScore.ToString();
     }

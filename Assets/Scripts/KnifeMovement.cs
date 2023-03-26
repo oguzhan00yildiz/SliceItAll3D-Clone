@@ -8,38 +8,27 @@ public class KnifeMovement : MonoBehaviour
     private Rigidbody rb;
     public Vector3 force;
     public Vector3 forceB;
-  
     public float torque = 4f;
     public float torqueB = 4f;
-    float endTorque = 0f;
     private float realRotationAmount;
     private Color originalColor;
-
-
     public float rotationAmount;
-
     [SerializeField] private float maxHorizontalVelocity=3f,minDegree,maxDegree;
     private float rotX;
     private float rotY;
-
     private bool angDrag=false;
-
     public bool isFailed;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
         knifeMovementInstance=this;
-
         originalColor = transform.GetChild(2).GetComponent<Renderer>().material.color;
-
         isFailed = false;
     }
 
     void Update()
     {
         Move();
-
     }
     public void Flip()
     {
@@ -60,7 +49,6 @@ public class KnifeMovement : MonoBehaviour
     private void Move()
     {
         realRotationAmount = UnityEditor.TransformUtils.GetInspectorRotation(gameObject.transform).x;
-
         if (rb.velocity.magnitude > maxHorizontalVelocity)
         {
             rb.velocity = rb.velocity.normalized * maxHorizontalVelocity;
@@ -71,7 +59,6 @@ public class KnifeMovement : MonoBehaviour
         {
             StartCoroutine(Timer());
             Flip();
-            
         }
         else
         {
@@ -80,28 +67,20 @@ public class KnifeMovement : MonoBehaviour
                 rb.angularDrag = 7f;
             }
         }
-
-
     }
-
 
     public void PushBack()
     {
-            StartCoroutine(Flash());
-            rb.velocity=new Vector3(0,0,0);
-            rb.AddForce(forceB, ForceMode.Impulse);
-
-            
+        StartCoroutine(Flash());
+        rb.velocity=new Vector3(0,0,0);
+        rb.AddForce(forceB, ForceMode.Impulse);  
     }
 
     private IEnumerator Flash()
     {
        transform.GetChild(2).GetComponent<Renderer>().material.color = Color.white;
-
         yield return new WaitForSeconds(0.1f);
-            
        transform.GetChild(2).GetComponent<Renderer>().material.color=originalColor;
-
     }
 
     private void OnTriggerEnter(Collider other)
@@ -111,7 +90,6 @@ public class KnifeMovement : MonoBehaviour
             rb.isKinematic = true;
             isFailed = true;
             this.GetComponent<KnifeMovement>().enabled = false;
-            Debug.Log(isFailed);
         }
     }  
    
