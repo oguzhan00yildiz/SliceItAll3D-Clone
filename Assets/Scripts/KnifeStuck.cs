@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KnifeStuck : MonoBehaviour
 {
-   public Rigidbody rb;
+   [SerializeField] private Rigidbody rb;
    
     private bool isKnifeOnPlatform;
 
@@ -19,12 +19,9 @@ public class KnifeStuck : MonoBehaviour
         km = transform.gameObject.GetComponent<KnifeMovement>();
         KnifeStuckInstance = this;
         isLevelDone = false;
-
     }
     private void Update() 
     {
-        
-
         if (Input.GetMouseButtonDown(0)) 
            {
             if (isKnifeOnPlatform) 
@@ -46,42 +43,36 @@ public class KnifeStuck : MonoBehaviour
         else if (other.CompareTag("2x"))
         {
             rb.isKinematic = true;
-            //isKnifeOnPlatform=true;
             this.GetComponent<KnifeMovement>().enabled = false;
             isLevelDone = true;
         }
         else if (other.CompareTag("3x"))
         {
             rb.isKinematic = true;
-            //isKnifeOnPlatform=true;
             this.GetComponent<KnifeMovement>().enabled = false;
             isLevelDone = true;
         }
         else if (other.CompareTag("4x"))
         {
             rb.isKinematic = true;
-            //isKnifeOnPlatform=true;
             this.GetComponent<KnifeMovement>().enabled = false;
             isLevelDone = true;
         }
         else if (other.CompareTag("5x"))
         {
             rb.isKinematic = true;
-            //isKnifeOnPlatform=true;
             this.GetComponent<KnifeMovement>().enabled = false;
             isLevelDone = true;
         }
         else if (other.CompareTag("10x"))
         {
             rb.isKinematic = true;
-            //isKnifeOnPlatform=true;
             this.GetComponent<KnifeMovement>().enabled = false;
             isLevelDone = true;
         }
         else if (other.CompareTag("1x"))
         {
-            rb.isKinematic = true;
-            //isKnifeOnPlatform=true;
+            rb.isKinematic = true;          
             this.GetComponent<KnifeMovement>().enabled = false;
             isLevelDone = true;
         }

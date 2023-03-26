@@ -6,11 +6,9 @@ using TMPro;
 
 public class UIPanelControl : MonoBehaviour
 {
-
     [SerializeField] private GameObject StartPanel, FailPanel, SuccesPanel, RetryButton;
     private bool isFailed, isLevelDone, isStarted;
     [SerializeField] private TMP_Text levelTxt;
-
     void Awake()
     {
         levelTxt.text = "Level " + (SceneManager.GetActiveScene().buildIndex + 1).ToString();
@@ -40,10 +38,9 @@ public class UIPanelControl : MonoBehaviour
     public void SuccesPanelButton()
     {
         StartCoroutine(Timer());
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 
-    // Update is called once per frame
     void Update()
     {
         isFailed = KnifeMovement.knifeMovementInstance.isFailed;

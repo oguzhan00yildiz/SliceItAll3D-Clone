@@ -8,5 +8,4 @@ public class PopUp : MonoBehaviour
     {
         Destroy(gameObject, 1f);
     }
-
 }

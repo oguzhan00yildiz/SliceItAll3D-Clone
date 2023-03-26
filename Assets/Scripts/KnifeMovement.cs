@@ -8,8 +8,7 @@ public class KnifeMovement : MonoBehaviour
     private Rigidbody rb;
     public Vector3 force;
     public Vector3 forceB;
-    public float torque = 4f;
-    public float torqueB = 4f;
+    [SerializeField] private float torque = 4f;
     private float realRotationAmount;
     private Color originalColor;
     public float rotationAmount;

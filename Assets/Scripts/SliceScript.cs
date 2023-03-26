@@ -4,21 +4,20 @@ using UnityEngine;
 using EzySlice;
 using TMPro;
 
-public class SliceTestScript : MonoBehaviour
+public class SliceScript : MonoBehaviour
 {
     public Material materialSlicedSide;
-
     private int tempIndex = 0;
     private int materialIndex;
-    public float explosionForceNear, explosionForceFar;
-    public float explosionRadius;
-    public bool gravity , kinematic;
+    [SerializeField] private float explosionForceNear, explosionForceFar;
+    [SerializeField] private float explosionRadius;
+    [SerializeField] private bool gravity , kinematic;
     public int score;
 
     public Material[] materials = new Material[9];
     
-    public static SliceTestScript SliceTestScriptInstant;
-    public TMP_Text popUpScore;
+    public static SliceScript SliceTestScriptInstant;
+    [SerializeField]  private TMP_Text popUpScore;
 
     [SerializeField] private GameObject Splash;
 
@@ -51,16 +50,11 @@ public class SliceTestScript : MonoBehaviour
             AddComponent(SlicedObjLow , explosionForceFar);
             score++;
             Instantiate(popUpScore, SlicedObjUp.transform.position + new Vector3(3,0,-3), Quaternion.Euler(0, -60, 0));
-
-            Color objectColor = other.GetComponent<Renderer>().material.color;
-           
+            Color objectColor = other.GetComponent<Renderer>().material.color;         
             var tempSplash=Instantiate(Splash,SlicedObjUp.transform.position,Quaternion.Euler(-45,0,0));
-
             var tempSplashSettings = tempSplash.GetComponent<ParticleSystem>().main;
             tempSplashSettings.startColor =objectColor;
-            
             Destroy(tempSplash,1f);
-
             StartCoroutine(DestroyHulls(SlicedObjUp, SlicedObjLow));
         }
         else if(other.gameObject.CompareTag("CanSlicePen"))
@@ -71,21 +65,15 @@ public class SliceTestScript : MonoBehaviour
             GameObject SlicedObjLow = sliceObj.CreateLowerHull(other.gameObject, materialSlicedSide);
             Destroy(other.gameObject);
             AddComponent(SlicedObjUp , explosionForceNear);
-            //AddComponent(SlicedObjLow , explosionForceFar);
             score++;
-            Instantiate(popUpScore, SlicedObjUp.transform.position + new Vector3(0,0,0)/*transform.position*/, Quaternion.Euler(0, -60, 0));
-
+            Instantiate(popUpScore, SlicedObjUp.transform.position + new Vector3(0,0,0), Quaternion.Euler(0, -60, 0));
             Color objectColor = other.GetComponent<Renderer>().material.color;
             var tempSplash=Instantiate(Splash,SlicedObjUp.transform.position,Quaternion.Euler(-45,0,0));
             var tempSplashSettings = tempSplash.GetComponent<ParticleSystem>().main;
             tempSplashSettings.startColor =objectColor;
-            
-            StartCoroutine(DestroyHulls(SlicedObjUp, SlicedObjLow));
-
-            
+            StartCoroutine(DestroyHulls(SlicedObjUp, SlicedObjLow)); 
         }
     }
-
 
     private SlicedHull Slice(GameObject obj, Material mat)
     {
@@ -103,7 +91,7 @@ public class SliceTestScript : MonoBehaviour
 
     IEnumerator DestroyHulls(GameObject UpHull, GameObject LowHull)
     {
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(10f);
         Destroy(UpHull);
         Destroy(LowHull);
     }

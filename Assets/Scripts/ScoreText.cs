@@ -5,10 +5,9 @@ using TMPro;
 
 public class ScoreText : MonoBehaviour
 {
-
-    public TMP_Text score;
-    public TMP_Text currentScore;
-    public int multipliedScore;
+    [SerializeField] private TMP_Text score;
+    [SerializeField] private TMP_Text currentScore;
+    [SerializeField] private int multipliedScore;
 
     void Update()
     {
@@ -19,8 +18,8 @@ public class ScoreText : MonoBehaviour
         }
         else
         {
-            score.text = SliceTestScript.SliceTestScriptInstant.score.ToString();
-            currentScore.text = SliceTestScript.SliceTestScriptInstant.score.ToString();
+            score.text = SliceScript.SliceTestScriptInstant.score.ToString();
+            currentScore.text = SliceScript.SliceTestScriptInstant.score.ToString();
         }
     }
 
@@ -57,7 +56,7 @@ public class ScoreText : MonoBehaviour
 
     private void ScoreMultiplier(int multipleValue) 
     {
-        multipliedScore = SliceTestScript.SliceTestScriptInstant.score * multipleValue; 
+        multipliedScore = SliceScript.SliceTestScriptInstant.score * multipleValue; 
         score.text = multipliedScore.ToString();
         currentScore.text = multipliedScore.ToString();
     }
