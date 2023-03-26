@@ -13,3 +13,6 @@
 # How To Launch Completed Level
 Go to the scenes folder and open Level1 for the first level.
 Do not forget to set aspect ratio 1080x1920 from scene or any mobile resolution you want.
+
+![image](https://user-images.githubusercontent.com/95942385/227786655-7b63ce0e-2a27-4429-9e37-f95813a0339a.png)
+
