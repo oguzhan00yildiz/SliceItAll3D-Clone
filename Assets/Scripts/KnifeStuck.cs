@@ -78,6 +78,13 @@ public class KnifeStuck : MonoBehaviour
             this.GetComponent<KnifeMovement>().enabled = false;
             isLevelDone = true;
         }
+        else if (other.CompareTag("1x"))
+        {
+            rb.isKinematic = true;
+            //isKnifeOnPlatform=true;
+            this.GetComponent<KnifeMovement>().enabled = false;
+            isLevelDone = true;
+        }
 
     }
     IEnumerator Timer()
